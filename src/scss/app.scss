@@ -1,0 +1,90 @@
+/* By Athlon Front-End Team */
+
+/* Core variables */
+@import 'base/vars';
+
+/* CSS Reset */
+@import 'base/reset';
+
+/* CSS print */
+@import 'base/print';
+
+/* Fonts */
+@import 'base/fonts';
+
+/* Mixins, helpers and functions */
+@import 'base/mixins';
+
+/* Vendor */
+
+/* Components */
+
+
+/* Demo styles */
+
+body{
+  background: #081116;
+  color: #7693A8;
+  font-family: "ＭＳ Ｐゴシック";
+  height: 100%;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+.l-header{
+    width: 100%;
+    position: fixed;
+    padding: 0 15px;
+    text-align: center;
+}
+
+
+.l-main{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+a{
+    color: #7693A8;
+
+    &:hover,
+    &:focus,
+    &:active{
+        color: #9CAEBD;
+    }
+}
+
+.c-character{
+  border: 1px solid  #7693A8;
+}
+
+.c-log{
+  display: flex;
+  flex-direction: column-reverse;
+  flex: 1 1 100;
+
+}
+
+.l-main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "player . monster"
+    "log log log";
+}
+.l-log{ 
+  grid-area: log;
+  display: flex;
+  justify-content: center;
+}
+.l-player{ 
+  grid-area: player;
+}
+.l-monster{
+  grid-area: monster;
+}
