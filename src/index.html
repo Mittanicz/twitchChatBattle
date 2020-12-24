@@ -7,16 +7,28 @@
   <body>
     <main class="l-main">
         <div class="l-player c-character">
-            <h1>Twich chat</h1>
+            <h1 class="c-character__title">Twich chat</h1>
+            <div class="c-progressBar" id="healthProgressBar">
+              <div class="c-progressBar__value">0/25</div>
+            </div>
+            <div class="c-progressBar" style="background: linear-gradient(90deg,#d6a45d 48%, rgba(11,12,15,1) 48%);">
+              <div class="c-progressBar__value">0/25</div>
+            </div>
             <ul class="c-character__attributes">
+                <li>Health: <span id="playerHealth"></span></li>
+                <li>Armor: <span id="playerArmor"></span></li>
                 <li>Damage: <span id="playerDamage"></span></li>
             </ul>
         </div>
         <div class="l-monster c-character">
             <h1 id="monsterName"></h1>
+            <div class="c-progressBar" id="monsterHealthProgressBar">
+              <div class="c-progressBar__value">0/25</div>
+            </div>
             <ul class="c-character__attributes">
                 <li>Health: <span id="monsterHealth"></span></li>
                 <li>Armor: <span id="monsterArmor"></span></li>
+                <li>Damage: <span id="monsterDamage"></span></li>
             </ul>
         </div>
         <div class="l-log" >

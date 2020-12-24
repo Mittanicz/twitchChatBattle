@@ -1,66 +1,102 @@
 import Monster from "./monster";
-import { player } from "./player";
+import Player from "./player";
+
+let monsterInstance = new Monster();
+let playerInstance = new Player(100,2,3);
 
 class Game {
     constructor() {
     }
-    
-    calculateDamage(damage, name, monster) {
-        let userDamage = player.baseDamage + damage - monster.armor;
-        let monsterHealth = document.getElementById('monsterHealth');
-        if(userDamage > 0){
-            monster.health = monster.health - userDamage;
-        } else {
-            userDamage = 0;
-        }
-        monsterHealth.innerHTML = monster.health;
-        this.combatLog(userDamage, name);
 
-        return userDamage
+    playerAttack(damage, monster){
+        let userDamage = player.baseDamage + damage - monster.armor;
+        return userDamage   
     }
 
-    combatLog(userDamage, name){
+    combatLog(damage, name){
         let record = document.createElement("li");
-        if(userDamage <= 0){
+        if(damage <= 0){
             record.innerHTML = `Attack from ${name} was dodged`;
         } else {
-            record.innerHTML = `${name} dealt ${userDamage}`;
+            record.innerHTML = `${name} dealt ${damage}`;
         }
         document.getElementById("log").appendChild(record);
 
         let recordList = document.querySelectorAll('#log li').length
          
-
         if(recordList >= 8){
             let firstChild = document.getElementById("log");
             firstChild.removeChild(firstChild.childNodes[0])
         }
     }
 
-    checkMonster(monsterHealth){
-        if(monsterHealth <= 0){
-            return true;
-        }
-
+    updatePlayerStats(){
+        player.health += 2;
+        player.baseDamage += 1;
+        player.armor += 2;
+        player.level +=1;
     }
 
-    createMonster(health){
-        let monster;
-        let monsterName = document.getElementById('monsterName');
-        monsterName.innerHTML = 'qweqqw'
-        return monster = new Monster(health * 3,2,'qwe')
-    }
-
-    storePreviousMonster(health){
-        let monster;
-        return monster = new Monster(health,2,'qwe')
-    }
-
-    gameInit(monster){
+    updateUi(monster, player){
+        let playerArmor = document.getElementById('playerArmor');
         let playerDamage = document.getElementById('playerDamage');
+        let monsterName = document.getElementById('monsterName');
+        let monsterHealth = document.getElementById('monsterHealth');
         let monsterArmor = document.getElementById('monsterArmor');
-        playerDamage.innerHTML = player.baseDamage;
+        let monsterDamage = document.getElementById('monsterDamage');
+        monsterName.innerHTML = monster.name;
+        monsterHealth.innerHTML = monster.health;
         monsterArmor.innerHTML = monster.armor;
+        monsterDamage.innerHTML = monster.damage;
+        playerArmor.innerHTML = player.armor;
+        playerDamage.innerHTML = player.baseDamage;
+
+        let procentHealth = ((player.maxHealth / 100) * player.health);
+        if(player.maxHealth == player.health){
+            procentHealth = 100;
+        }
+        let playerHealthProgressBar = document.getElementById('healthProgressBar');
+        playerHealthProgressBar.setAttribute('style', `background: linear-gradient(90deg, #860918 ${procentHealth}%, rgba(11,12,15,1) ${procentHealth}%);`)
+        document.querySelector('#healthProgressBar div').innerHTML = `${player.health} / ${player.maxHealth}`
+
+        let monsterProcentHealth = ((player.maxHealth / 100) * player.health);
+        if(player.maxHealth == player.health){
+            monsterProcentHealth = 100;
+        }
+        let monsterHealthProgressBar = document.getElementById('healthProgressBar');
+        monsterHealthProgressBar.setAttribute('style', `background: linear-gradient(90deg, #860918 ${monsterProcentHealth}%, rgba(11,12,15,1) ${monsterProcentHealth}%);`)
+        document.querySelector('#monsterHealthProgressBar div').innerHTML = `${monster.health} / ${monster.maxHealth}`
+    }
+
+    gameInit(monster, player){
+        this.updateUi(monster, player)
+    }
+
+    checkGameStatus(monster, player){
+        if(player.health <= 0){
+            return 'playerDie';
+        }
+        if(monster.health <= 0){
+            return 'monsterDie';
+        }
+    }
+
+    createMonster(player) {
+        let monster = monsterInstance.createMonster(player)
+        this.updateUi(monster, player)
+        return monster
+
+    }
+
+    restart(){
+        let player = playerInstance.createPlayer()
+        let monster = monsterInstance.createMonster(player)
+        console.log(player)
+        this.updateUi(monster, player)
+        return {
+            player: player,
+            monster: monster,
+        }
     }
 }
 

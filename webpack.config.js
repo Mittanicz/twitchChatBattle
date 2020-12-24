@@ -3,6 +3,7 @@
  */
 
 const serverConfiguration = {
+  devtool: 'source-map',
   internal: {
     server: {
       baseDir: 'dist',
