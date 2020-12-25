@@ -2,16 +2,16 @@ files:
   # formatter: stylish
   # include: '**/*.s+(a|c)ss'
   ignore:
-    - '/usr/local/lib/node_modules/**/*.scss'
-    - './node_modules/**/*.scss'
-    - 'src/scss/vendor/**/*.scss'
-    - 'src/scss/base/_reset.scss'
-    - 'src/scss/base/_print.scss'
-    - 'src/scss/base/_fonts.scss'
-    - 'src/scss/base/mixins.scss'
-    - 'src/scss/dirty/_hacks.scss'
-    - 'node_modules/**/*.s+(a|c)ss'
-    - 'node_modules/grunt-sass/node_modules/node-sass/test/fixtures/watching/index.sass'
+    - "/usr/local/lib/node_modules/**/*.scss"
+    - "./node_modules/**/*.scss"
+    - "src/scss/vendor/**/*.scss"
+    - "src/scss/base/_reset.scss"
+    - "src/scss/base/_print.scss"
+    - "src/scss/base/_fonts.scss"
+    - "src/scss/base/mixins.scss"
+    - "src/scss/dirty/_hacks.scss"
+    - "node_modules/**/*.s+(a|c)ss"
+    - "node_modules/grunt-sass/node_modules/node-sass/test/fixtures/watching/index.sass"
 
 rules:
   # Extends
@@ -22,8 +22,7 @@ rules:
   # Mixins
   mixins-before-declarations:
     - 2
-    -
-      exclude: ['bp']
+    - exclude: ["bp"]
 
   # Line Spacing
   one-declaration-per-line: 2
@@ -48,8 +47,7 @@ rules:
   no-misspelled-properties: 2
   no-qualifying-elements:
     - 2
-    -
-      allow-element-with-attribute: true
+    - allow-element-with-attribute: true
 
   no-trailing-whitespace: 2
   no-trailing-zero: 2
@@ -75,18 +73,19 @@ rules:
 
   # Style Guide
   attribute-quotes: 2
-  bem-depth: 0
+  bem-depth: 1
   border-zero:
     - 2
-    -
-      convention: 'none'
+    - convention: "none"
 
   brace-style: 2
   clean-import-paths: 2
   empty-args: 0
   hex-length: 2
   hex-notation: 2
-  indentation: 2
+  indentation:
+    - 4
+    - size: 4
   leading-zero: 2
   nesting-depth: 0
   property-sort-order: 0
@@ -98,15 +97,15 @@ rules:
   zero-unit: 2
 
   # Inner Spacing
-  space-after-comma: 2
-  space-before-colon: 2
-  space-after-colon: 2
-  space-before-brace: 2
-  space-before-bang: 2
-  space-after-bang: 2
-  space-between-parens: 2
-  space-around-operator: 2
+  space-after-comma: 4
+  space-before-colon: 4
+  space-after-colon: 4
+  space-before-brace: 4
+  space-before-bang: 4
+  space-after-bang: 4
+  space-between-parens: 4
+  space-around-operator: 4
 
   # Final Items
   trailing-semicolon: 2
-  final-newline: 2
+  final-newline: 1

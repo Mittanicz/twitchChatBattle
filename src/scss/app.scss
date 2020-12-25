@@ -1,128 +1,146 @@
-/* By Athlon Front-End Team */
+/*By Athlon Front-End Team*/
 
-/* Core variables */
+/*Core variables*/
 @import 'base/vars';
 
-/* CSS Reset */
+/*CSS Reset*/
 @import 'base/reset';
 
-/* CSS print */
+/*CSS print*/
 @import 'base/print';
 
-/* Fonts */
+/*Fonts*/
 @import 'base/fonts';
 
-/* Mixins, helpers and functions */
+/*Mixins, helpers and functions*/
 @import 'base/mixins';
 
-/* Vendor */
+/*Vendor*/
 
-/* Components */
+/*Components*/
 
-
-/* Demo styles */
+/*Demo styles*/
 
 body{
-  background: url('../images/bg.jpg') no-repeat;
-  background-size: cover;
-  color: #7693A8;
-  font-family: "Univia Pro";
-  height: 100%;
-  min-height: 100vh;
-  text-rendering: optimizeLegibility;
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+    color: #7693a8;
+    font-family: 'Univia Pro';
+    height: 100%;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
 }
-
-.l-header{
-    width: 100%;
-    position: fixed;
-    padding: 0 15px;
-    text-align: center;
-}
-
 
 .l-main{
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 0 150px;
+    padding: 0 150px;
+    text-align: center;
+    display: grid;
+    gap: 30px 30px;
+    grid-template-areas:
+    "l-title l-title l-title"
+    "l-player . l-monster"
+    "l-gameStats l-log l-allTimeStats";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.l-title { 
+    grid-area: l-title;
+    font-size: 56px;
+    color: #7e4f13;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.l-player { 
+    grid-area: l-player; 
+}
+
+.l-monster { 
+    grid-area: l-monster; 
+
+}
+.l-log { 
+    grid-area: l-log;
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .8);
+    color:  #7e4f13;
+}
+.l-gameStats { 
+    grid-area: l-gameStats;
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .8);
+}
+.l-allTimeStats { 
+    grid-area: l-allTimeStats;
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .8);
 }
 
 a{
-    color: #7693A8;
+    color: #7693a8;
 
     &:hover,
     &:focus,
     &:active{
-        color: #9CAEBD;
+        color: #9caebd;
     }
 }
 
 .c-character{
-  background: rgba(0, 0, 0, 0.8)
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
 }
 
 .c-character__title{
-  background: linear-gradient(90deg, rgba(75,38,16,1) 15%, rgba(83,37,16,1) 35%, rgba(107,59,33,1) 65%, rgba(147,81,45,1) 80%);
-  font-size: 20px;
-  padding: 5px 15px;
-  color: #cc9f68;
-  margin-bottom: 10px;
+    background: linear-gradient(90deg, #4b2610 15%, #532510 25%, #93512d 50%, #532510 85%, #4b2610 95%);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #cc9f68;
+    font-size: 20px;
+    padding: 5px 15px;
 }
 
 .c-character__attributes{
-  color: #7e4f13;
-  li{
-    background: #181210;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-  
-    &:nth-child(2){
-      background: #150e0c;
-    }
+    background: rgba(0, 0, 0, .8);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #7e4f13;
 
-  }
+    li{
+        background: #181210;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+
+        &:nth-child(2){
+            background: #150e0c;
+        }
+    }
 }
 
 .c-log{
-  display: flex;
-  flex-direction: column-reverse;
-  flex: 1 1 100;
-
-}
-
-.l-main{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "player . monster"
-    "log log log";
-}
-.l-log{ 
-  grid-area: log;
-  display: flex;
-  justify-content: center;
-}
-.l-player{ 
-  grid-area: player;
-}
-.l-monster{
-  grid-area: monster;
+    display: flex;
+    flex: 1 1 100;
+    flex-direction: column-reverse;
 }
 
 .c-progressBar{
-  width: 100%;
-  height: 25px;
-  position: relative;
+    height: 25px;
+    position: relative;
+    width: 100%;
 }
 
 .c-progressBar__value{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
