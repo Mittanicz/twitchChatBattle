@@ -1,4 +1,7 @@
 {
+    "extends": [
+        "stylelint-config-prettier"
+    ],
     "plugins": ["stylelint-prettier", "stylelint-order"],
     "rules": {
         "indentation": 4,

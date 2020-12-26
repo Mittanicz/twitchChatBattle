@@ -18,31 +18,41 @@
               <div class="c-progressBar__value">0/25</div>
             </div>
             <ul class="c-character__attributes">
-                <li>Health: <span id="playerHealth"></span></li>
+                <li>Level: <span id="playerLevel">4</span></li>
                 <li>Armor: <span id="playerArmor"></span></li>
                 <li>Damage: <span id="playerDamage"></span></li>
             </ul>
         </div>
         <div class="l-monster c-character">
-            <h1 id="monsterName"></h1>
+            <h1 class="c-character__title" id="monsterName"></h1>
             <div class="c-progressBar" id="monsterHealthProgressBar">
               <div class="c-progressBar__value">0/25</div>
             </div>
             <ul class="c-character__attributes">
-                <li>Health: <span id="monsterHealth"></span></li>
                 <li>Armor: <span id="monsterArmor"></span></li>
                 <li>Damage: <span id="monsterDamage"></span></li>
             </ul>
         </div>
         <div class="l-gameStats">
-          current game stats
+          <h1 class="c-title">Current game stats</h1>
+          <ul class="c-character__attributes">
+            <li>Beated monsters: <span id="currentGameBeated">0</span></li>
+            <li>Time: <span id="">02:41</span></li>
+            <li>Higher Damage: <span id="">Twtich user - 47</span></li>
+        </ul>
         </div>
         <div class="l-log" >
+          <h1 class="c-title">Combat log</h1>
           <ul class="c-log" id="log">
           </ul>
         </div>
         <div class="l-allTimeStats">
-          all time stats
+          <h1 class="c-title">All time stats</h1>
+          <ul class="c-character__attributes">
+            <li>Beated monsters: <span id="">3</span></li>
+            <li>Time: <span id="">02:41</span></li>
+            <li>Higher Damage: <span id="">Twtich user - 47</span></li>
+        </ul>
         </div>
     </main>
   </body>

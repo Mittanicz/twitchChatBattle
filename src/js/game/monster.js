@@ -1,23 +1,21 @@
 import { monsterName } from "./monsterNames";
 
 class Monster {
-    constructor(health, armor, damage, name) {
-        this.health = health;
-        this.maxHealth = health;
-        this.armor = armor;
-        this.damage = damage;
-        this.name = name;
+    constructor() {
+
     }
 
     createMonster(player){
-        return {
+        let result = {
             health: this.generateHealth(player),
-            maxHealth: this.health,
+            maxHealth: 0,  
             armor: this.generateArmor(player),
             damage: this.generateDamage(player),
             attackSpeed: this.generateAttackSpeed(),
             name: this.generateName(),
         }
+        result.maxHealth = result.health;
+        return result
     }
 
     generateAttackSpeed(){

@@ -1,5 +1,4 @@
 import '../scss/app.scss';
-import twitchLogo from '../images/twitchLogo.png';
 import Game from "./game/game";
 import Monster from "./game/monster";
 import Player from './game/player';
@@ -11,13 +10,26 @@ let player = playerInstance.createPlayer()
 let monster = monsterInstance.createMonster(player)
 game.gameInit(monster, player)
 
+let gameStats = {
+    current: {
+        beatedMonsters: 0,
+        time: 0,
+        higherDamage : ''
+    },
+    alltime: {
+        beatedMonsters: 0,
+        time: 0,
+        higherDamage : ''
+    }
+}
+
 const client = new tmi.Client({
     options: { },
     connection: {
         reconnect: true,
         secure: true
     },
-    channels: [ 'theHemulka' ]
+    channels: [ 'FattyPillow' ]
 });
 client.connect().catch(console.error);
 client.on('message', (channel, tags, message, self) => {
@@ -40,13 +52,12 @@ function monsterAttack(){
     game.combatLog(damage, monster.name)
     game.updateUi(monster, player)
     handleGameState()
-
 }
 
 function playerAttack(damage, user){
     let userDamage = playerInstance.attack(monster, player, damage)
     if(userDamage > 0){
-        monster.health = monster.health - userDamage;
+        monster.health = monster.health - userDamage - 20;
     } else {
         userDamage = 0 
     }
@@ -57,13 +68,17 @@ function playerAttack(damage, user){
 
 function handleGameState(){
     let gameStatus = game.checkGameStatus(monster, player);
+    
     if(gameStatus == 'playerDie'){
-        console.log('playerDied')
+        console.log('playerDied');
         clearInterval(tick);
-        let gameInfo = game.restart()
-        gameRestart(gameInfo)
+        let gameInfo = game.restart();
+        gameRestart(gameInfo);
     } else if(gameStatus == 'monsterDie'){
-        console.log('you beat a monster')
+        console.log('you beat a monster');
+        game.updatePlayerStats(player);
+        gameStats.current.beatedMonsters = gameStats.current.beatedMonsters + 1;
+        game.updateGameStats(gameStats);
         clearInterval(tick);
         monster = monsterInstance.createMonster(player);
         tick = setInterval(monsterAttack, monster.attackSpeed);

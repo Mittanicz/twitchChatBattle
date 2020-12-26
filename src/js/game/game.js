@@ -24,13 +24,13 @@ class Game {
 
         let recordList = document.querySelectorAll('#log li').length
          
-        if(recordList >= 8){
+        if(recordList >= 4){
             let firstChild = document.getElementById("log");
             firstChild.removeChild(firstChild.childNodes[0])
         }
     }
 
-    updatePlayerStats(){
+    updatePlayerStats(player){
         player.health += 2;
         player.baseDamage += 1;
         player.armor += 2;
@@ -41,11 +41,9 @@ class Game {
         let playerArmor = document.getElementById('playerArmor');
         let playerDamage = document.getElementById('playerDamage');
         let monsterName = document.getElementById('monsterName');
-        let monsterHealth = document.getElementById('monsterHealth');
         let monsterArmor = document.getElementById('monsterArmor');
         let monsterDamage = document.getElementById('monsterDamage');
         monsterName.innerHTML = monster.name;
-        monsterHealth.innerHTML = monster.health;
         monsterArmor.innerHTML = monster.armor;
         monsterDamage.innerHTML = monster.damage;
         playerArmor.innerHTML = player.armor;
@@ -60,10 +58,10 @@ class Game {
         document.querySelector('#healthProgressBar div').innerHTML = `${player.health} / ${player.maxHealth}`
 
         let monsterProcentHealth = ((player.maxHealth / 100) * player.health);
-        if(player.maxHealth == player.health){
+        if(monster.maxHealth == monster.health){
             monsterProcentHealth = 100;
         }
-        let monsterHealthProgressBar = document.getElementById('healthProgressBar');
+        let monsterHealthProgressBar = document.getElementById('monsterHealthProgressBar');
         monsterHealthProgressBar.setAttribute('style', `background: linear-gradient(90deg, #860918 ${monsterProcentHealth}%, rgba(11,12,15,1) ${monsterProcentHealth}%);`)
         document.querySelector('#monsterHealthProgressBar div').innerHTML = `${monster.health} / ${monster.maxHealth}`
     }
@@ -86,6 +84,11 @@ class Game {
         this.updateUi(monster, player)
         return monster
 
+    }
+
+    updateGameStats(gameStats){
+        let currentGameBeated = document.getElementById('currentGameBeated');
+        currentGameBeated.innerHTML = gameStats.current.beatedMonsters;
     }
 
     restart(){
