@@ -1,0 +1,33 @@
+.c-character{
+    background: rgba(0, 0, 0, .8);
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
+}
+
+.c-character__title{
+    background: linear-gradient(90deg, #4b2610 15%, #532510 25%, #93512d 50%, #532510 85%, #4b2610 95%);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #cc9f68;
+    font-size: 20px;
+    padding: 5px 15px;
+}
+
+.c-character__attributes{
+    
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #7e4f13;
+
+    li{
+        background: #181210;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+
+        &:nth-child(2){
+            background: #150e0c;
+        }
+    }
+}

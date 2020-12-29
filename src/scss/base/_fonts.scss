@@ -4,3 +4,13 @@
   src: url("../fonts/univia-pro-regular.woff2") format("woff2");
   font-style: normal;
 }
+
+a{
+  color: #7693a8;
+
+  &:hover,
+  &:focus,
+  &:active{
+      color: #9caebd;
+  }
+}

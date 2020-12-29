@@ -6,12 +6,7 @@
   "scripts": {
     "build": "webpack --mode=development",
     "serve": "webpack --mode=development --watch",
-    "watch:externalServer": "webpack --mode=development --watch --externalServer",
-    "bundle": "npm ci && npm run watch",
-    "bundle:externalServer": "npm ci && npm run watch:externalServer",
-    "production": "cross-env NODE_ENV=production webpack --mode=production",
-    "lint-sass": "sass-lint -v -q --format=compact",
-    "lint-js": "eslint --ext .js src/js/"
+    "production": "cross-env NODE_ENV=production webpack --mode=production"
   },
   "keywords": [
     "webpack",

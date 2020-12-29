@@ -1,0 +1,57 @@
+.l-main{
+    display: grid;
+    gap: 30px 30px;
+    grid-template-areas: 'l-title l-title l-title'
+        'l-player . l-monster'
+        'l-gameStats l-log l-allTimeStats';
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 150px;
+    text-align: center;
+}
+
+.l-title{
+    align-items: center;
+    color: #7e4f13;
+    display: flex;
+    font-size: 56px; 
+    grid-area: l-title;
+    justify-content: center;
+    text-shadow: 2px 2px #0a0a0d;
+}
+
+.l-player{
+    grid-area: l-player;
+}
+
+.l-monster{
+    align-self: first baseline;
+    grid-area: l-monster;
+}
+
+.l-log{
+    background: rgba(0, 0, 0, .8);
+    border: 1px solid #7e4f13;
+    border-radius: 8px;
+    color: #7e4f13; 
+    grid-area: l-log;
+    height: 125px;
+}
+
+.l-gameStats{
+    background: rgba(0, 0, 0, .8);
+    border: 1px solid #7e4f13;
+    border-radius: 8px; 
+    grid-area: l-gameStats;
+    height: 125px;
+}
+
+.l-allTimeStats{
+    background: rgba(0, 0, 0, .8);
+    border: 1px solid #7e4f13;
+    border-radius: 8px; 
+    grid-area: l-allTimeStats;
+    height: 125px;
+}

@@ -1,0 +1,31 @@
+.c-progressBar{
+    height: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.c-progressBar__value{
+    font-size: 12px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.c-title{
+    color: #7e4f13;
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+
+    &:before{
+        background: url('https://web.poecdn.com/image/item/popup/seperator-unique.png?1605141671963') center no-repeat;
+        bottom: -7px;
+        content: '';
+        height: 8px;
+        left: 0;
+        position: absolute;
+        right: 0;
+    }
+}
